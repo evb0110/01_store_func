@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function shopItemFunc({
+function ShopItemFunc({
   item: { brand, title, description, descriptionFull, price, currency },
 }) {
   return (
-    <div class="main-content">
+    <div className="main-content">
       <h2>{brand}</h2>
       <h1>{title}</h1>
       <h3>{description}</h3>
-      <div class="description">{descriptionFull}</div>
-      <div class="highlight-window mobile">
-        <div class="highlight-overlay" />
+      <div className="description">{descriptionFull}</div>
+      <div className="highlight-window mobile">
+        <div className="highlight-overlay" />
       </div>
-      <div class="divider" />
-      <div class="purchase-info">
-        <div class="price">
+      <div className="divider" />
+      <div className="purchase-info">
+        <div className="price">
           {currency}
           {price.toFixed(2)}
         </div>
@@ -25,8 +25,15 @@ function shopItemFunc({
   );
 }
 
-shopItemFunc.propTypes = {
-  item: PropTypes.string.isRequired,
-}
+ShopItemFunc.propTypes = {
+  item: PropTypes.exact({
+    brand: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    descriptionFull: PropTypes.string,
+    price: PropTypes.number,
+    currency: PropTypes.string,
+  }).isRequired,
+};
 
-export default shopItemFunc;
+export default ShopItemFunc;
